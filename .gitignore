@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Vercel
+.vercel
+
+# Supabase
+.supabase/
+
+# Claude Code local files
+CL*
+.claude/CLAUDE.local.md
+.claude/settings.local.json
+
+# Misc
+*.zip
+node_modules
+supabase/.temp/
+index-*.css
+__docs__/
