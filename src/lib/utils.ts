@@ -27,13 +27,20 @@ export function generateInitials(name: string): string {
   
   const nameParts = name.split(' ');
   
+  const firstPart = nameParts[0];
+  const lastPart = nameParts[nameParts.length - 1];
+
+  if (!firstPart) return '';
+
   if (nameParts.length === 1) {
-    return nameParts[0].substring(0, 2).toUpperCase();
+    return firstPart.substring(0, 2).toUpperCase();
   }
-  
+
+  if (!lastPart) return firstPart.charAt(0).toUpperCase();
+
   return (
-    nameParts[0].charAt(0).toUpperCase() + 
-    nameParts[nameParts.length - 1].charAt(0).toUpperCase()
+    firstPart.charAt(0).toUpperCase() +
+    lastPart.charAt(0).toUpperCase()
   );
 }
 

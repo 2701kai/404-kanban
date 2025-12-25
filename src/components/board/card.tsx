@@ -43,7 +43,7 @@ export default function Card({ card, className }: CardProps) {
           {card.labels && card.labels.length > 0 && (
             <span className={cn(
               "text-xs font-medium px-1.5 py-0.5 rounded",
-              getLabelColorClass(card.labels[0])
+              getLabelColorClass(card.labels[0] ?? '')
             )}>
               {card.labels[0]}
             </span>

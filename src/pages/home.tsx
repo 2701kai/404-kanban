@@ -14,10 +14,9 @@ export default function Home() {
     if (newColumnName.trim()) {
       // Generate a random color for the new column
       const colors = ["#10B981", "#3B82F6", "#8B5CF6", "#EF4444", "#F59E0B"];
-      const randomColor = colors[Math.floor(Math.random() * colors.length)];
-      
+      const randomColor = colors[Math.floor(Math.random() * colors.length)] ?? "#10B981";
+
       addColumn({
-        id: Date.now().toString(),
         name: newColumnName,
         color: randomColor
       });

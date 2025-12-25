@@ -21,12 +21,10 @@ export default function Column({ column, className }: ColumnProps) {
   const handleAddCard = () => {
     if (newCardTitle.trim()) {
       addCard({
-        id: Date.now().toString(),
         columnId: column.id,
         title: newCardTitle,
         description: "",
         labels: ["New"],
-        createdAt: new Date().toISOString(),
         attachmentCount: 0,
         commentCount: 0
       });

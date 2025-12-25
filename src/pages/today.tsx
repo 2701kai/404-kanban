@@ -27,12 +27,10 @@ export default function Today() {
     if (newTask.trim()) {
       // Add a new card to the first column (assuming the first column is for new tasks)
       addCard({
-        id: Date.now().toString(),
         columnId: "1",
         title: newTask,
         description: "Created from Today's tasks",
         labels: ["Task"],
-        createdAt: new Date().toISOString(),
         attachmentCount: 0,
         commentCount: 0
       });
@@ -42,7 +40,7 @@ export default function Today() {
   
   const renderCardIcon = (card: CardType) => {
     if (card.labels && card.labels.length > 0) {
-      const label = card.labels[0].toLowerCase();
+      const label = (card.labels[0] ?? '').toLowerCase();
       if (label.includes('react') || label.includes('code')) {
         return <FileText className="h-5 w-5 text-primary" />;
       } else if (label.includes('documentation')) {

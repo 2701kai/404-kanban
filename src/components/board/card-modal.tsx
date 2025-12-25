@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { X, Download, ExternalLink, FileText, Link2, Calendar, User } from "lucide-react";
+import { X, Download, ExternalLink, FileText, Link2, Calendar, User, Paperclip } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -83,7 +83,7 @@ export default function CardModal({ card, isOpen, onClose }: CardModalProps) {
         <div className="flex justify-between items-start p-6 pb-4">
           <div>
             {editedCard.labels && editedCard.labels.length > 0 && (
-              <span className={`text-xs font-medium px-2 py-1 rounded-full ${getLabelColorClass(editedCard.labels[0])}`}>
+              <span className={`text-xs font-medium px-2 py-1 rounded-full ${getLabelColorClass(editedCard.labels[0] ?? '')}`}>
                 {editedCard.labels[0]}
               </span>
             )}

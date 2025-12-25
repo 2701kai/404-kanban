@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState, ReactNode, useCallback } from "react";
 import { Column, Card } from "@/types";
 import { db, columns as columnsTable, cards as cardsTable, DbColumn, DbCard } from "@/lib/db";
-import { eq, isNull, isNotNull, asc } from "drizzle-orm";
+import { eq, asc } from "drizzle-orm";
 
 interface BoardContextType {
   columns: Column[];
