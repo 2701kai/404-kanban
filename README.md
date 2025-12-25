@@ -2,10 +2,11 @@
 
 [![Vercel](https://img.shields.io/badge/Vercel-Deployed-black?style=flat&logo=vercel)](https://404-kanban.vercel.app)
 [![Neon](https://img.shields.io/badge/Neon-PostgreSQL-00E599?style=flat&logo=postgresql)](https://neon.tech)
-[![React](https://img.shields.io/badge/React-19-61DAFB?style=flat&logo=react)](https://react.dev)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=flat&logo=typescript)](https://www.typescriptlang.org)
+[![React](https://img.shields.io/badge/React-19.2-61DAFB?style=flat&logo=react)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5_Strict-3178C6?style=flat&logo=typescript)](https://www.typescriptlang.org)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1-06B6D4?style=flat&logo=tailwindcss)](https://tailwindcss.com)
-[![Drizzle](https://img.shields.io/badge/Drizzle-ORM-C5F74F?style=flat)](https://orm.drizzle.team)
+[![Vite](https://img.shields.io/badge/Vite-7.3-646CFF?style=flat&logo=vite)](https://vite.dev)
+[![Drizzle](https://img.shields.io/badge/Drizzle-0.45-C5F74F?style=flat)](https://orm.drizzle.team)
 
 A modern, Matrix-inspired Kanban board with cloud sync, built with React 19, Neon PostgreSQL, Drizzle ORM, and shadcn/ui.
 
@@ -25,25 +26,32 @@ A modern, Matrix-inspired Kanban board with cloud sync, built with React 19, Neo
 
 ## Tech Stack
 
-| Category | Technology |
-|----------|------------|
-| Framework | React 19 |
-| Build Tool | Vite 7 |
-| Runtime | Bun 1.3 |
-| Styling | Tailwind CSS 4 |
-| UI Components | shadcn/ui + Radix |
-| Database | Neon PostgreSQL |
-| ORM | Drizzle |
-| State | Context API + Polling |
-| Routing | React Router 7 |
-| Deployment | Vercel |
+| Category | Technology | Version |
+|----------|------------|---------|
+| Framework | React | 19.2 |
+| Build Tool | Vite | 7.3 |
+| Runtime | Bun | 1.3+ |
+| Styling | Tailwind CSS | 4.1 |
+| UI Components | shadcn/ui + Radix | latest |
+| Database | Neon PostgreSQL | serverless |
+| ORM | Drizzle | 0.45 |
+| Data Fetching | TanStack Query | 5.90 |
+| Routing | React Router | 7.11 |
+| Deployment | Vercel | edge |
+
+## Code Quality
+
+- **TypeScript Strict Mode** with `noUncheckedIndexedAccess`
+- **Tailwind v4** CSS-first config (`@theme` syntax)
+- **Zero `any` types** enforced
+- **Unused code detection** enabled
 
 ## Getting Started
 
 ### Prerequisites
 
 - [Bun](https://bun.sh) 1.3+
-- [Neon CLI](https://neon.tech/docs/reference/cli-install) (optional)
+- [Neon](https://neon.tech) account (free tier available)
 
 ### Installation
 
@@ -59,6 +67,9 @@ bun install
 cp .env.example .env
 # Edit .env with your Neon database URL
 
+# Push schema to database
+bunx drizzle-kit push
+
 # Start development server
 bun run dev
 ```
@@ -66,7 +77,6 @@ bun run dev
 ### Environment Variables
 
 ```env
-DATABASE_URL=postgresql://user:password@host/database?sslmode=require
 VITE_DATABASE_URL=postgresql://user:password@host/database?sslmode=require
 ```
 
@@ -78,8 +88,9 @@ VITE_DATABASE_URL=postgresql://user:password@host/database?sslmode=require
 | `bun run build` | Build for production |
 | `bun run preview` | Preview production build |
 | `bun run typecheck` | Run TypeScript checks |
-| `bunx drizzle-kit push` | Push schema changes to database |
-| `bun run scripts/seed.ts` | Seed database with default columns |
+| `bun run lint` | Run ESLint |
+| `bunx drizzle-kit push` | Push schema to database |
+| `bunx drizzle-kit studio` | Open Drizzle Studio |
 
 ## Database Schema
 
@@ -101,13 +112,13 @@ src/
 ├── context/          # BoardContext (Drizzle state)
 ├── lib/
 │   ├── db/           # Drizzle schema and client
+│   ├── queryClient.ts # TanStack Query setup
 │   └── utils.ts      # Utility functions
 ├── pages/            # Home, Today, Archive, NotFound
-├── hooks/            # useLocalStorage, useToast
+├── hooks/            # useMobile, useToast
 └── types/            # TypeScript interfaces
 
 drizzle/              # Database migrations
-scripts/              # Seed scripts
 ```
 
 ## License
